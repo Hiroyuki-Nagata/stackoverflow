@@ -67,7 +67,6 @@ public class Main {
 				.load(csvReader);
 		
 		System.out.println("----------------------");
-		System.out.println("Binary-Tree test !");
 		System.out.println("Blacklist size: " + beans.size());
 		System.out.println("----------------------");
 		//for (int i = 0; i < 10; i++) {
