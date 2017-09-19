@@ -2,16 +2,25 @@ package org.stackoverflow.btree;
 
 import java.util.Comparator;
 
+import com.orangesignal.csv.annotation.CsvColumn;
+import com.orangesignal.csv.annotation.CsvEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@CsvEntity
+@ToString
 public class BlacklistEntry implements Comparator<BlacklistEntry> {
 
-	private String referrer, ip, userAgent, email;
+	private String referrer;
+	private String ip;
+	private String userAgent;	
+	private String email;
 
 	@Override
 	public boolean equals(Object obj) {

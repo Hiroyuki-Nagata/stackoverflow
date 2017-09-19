@@ -7,9 +7,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.csveed</groupId>
-			<artifactId>csveed</artifactId>
-			<version>0.5.0</version>
+		    <groupId>com.orangesignal</groupId>
+		    <artifactId>orangesignal-csv</artifactId>
+		    <version>2.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
