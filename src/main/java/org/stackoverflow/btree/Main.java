@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.TreeSet;
 
+import org.apache.commons.lang3.time.StopWatch;
+
 import com.orangesignal.csv.Csv;
 import com.orangesignal.csv.CsvConfig;
 import com.orangesignal.csv.CsvReader;
@@ -30,7 +32,14 @@ public class Main {
 	}
 
 	public static boolean isBlacklisted(BlacklistEntry e) {
-		return cache.contains(e);
+		System.out.print("Searching " + e.toString());
+       StopWatch stopWatch = new StopWatch();
+       stopWatch.start();
+		boolean r = cache.contains(e);
+       stopWatch.stop();
+       System.out.print(", Elasped Time:" + stopWatch.getNanoTime() / 1000000f + "ms");
+       System.out.println(", Result: " + r);
+		return r;
 	}
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
@@ -57,11 +66,22 @@ public class Main {
 				.includes("page", "ip", "userAgent")
 				.load(csvReader);
 		
-		System.out.println("blacklist size: " + beans.size());
-		for (int i = 0; i < 10; i++) {
-			System.out.println(beans.get(i).toString());
-		}
-
+		System.out.println("----------------------");
+		System.out.println("Binary-Tree test !");
+		System.out.println("Blacklist size: " + beans.size());
+		System.out.println("----------------------");
+		//for (int i = 0; i < 10; i++) {
+		//	System.out.println(beans.get(i).toString());
+		//}
+		
+		// append all data
+		cache.addAll(beans);
+		
+		// page,ip,ua
+		isBlacklisted("*", "127.0.0.1", "*");
+		isBlacklisted("*", "127.0.0.2", "*");
+		isBlacklisted("*", "162.158.88.79", "*");
+		isBlacklisted("*", "*", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
 	}
 
 }
