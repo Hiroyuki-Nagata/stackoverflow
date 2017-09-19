@@ -1,4 +1,4 @@
-page,datetime,ip,user_agent
+"page","datetime","ip","user_agent"
 "Oozie","2017/07/30 10:40:20","162.158.88.79","Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup-crawler.com/)"
 "OpenSSL%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89","2017/07/30 10:40:36","162.158.88.79","Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup-crawler.com/)"
 "PMD%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%A8%E3%81%8B","2017/07/30 10:40:50","162.158.88.79","Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup-crawler.com/)"
