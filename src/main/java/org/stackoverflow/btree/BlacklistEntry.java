@@ -17,10 +17,9 @@ import lombok.ToString;
 @ToString
 public class BlacklistEntry implements Comparator<BlacklistEntry> {
 
-	private String referrer;
+	private String page;	
 	private String ip;
 	private String userAgent;	
-	private String email;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -34,11 +33,11 @@ public class BlacklistEntry implements Comparator<BlacklistEntry> {
 
 		BlacklistEntry other = (BlacklistEntry) obj;
 
-		if (email == null) {
-			if (other.email != null) {
+		if (page == null) {
+			if (other.page != null) {
 				return false;
 			}
-		} else if (!email.equals(other.email) && !(email.equals("*") || other.email.equals("*")) ) {
+		} else if (!page.equals(other.page) && !(page.equals("*") || other.page.equals("*")) ) {
 			return false;
 		}
 
@@ -47,14 +46,6 @@ public class BlacklistEntry implements Comparator<BlacklistEntry> {
 				return false;
 			}
 		} else if (!ip.equals(other.ip) && !(ip.equals("*") || other.ip.equals("*")) ) {
-			return false;
-		}
-
-		if (referrer == null) {
-			if (other.referrer != null) {
-				return false;
-			}
-		} else if (!referrer.equals(other.referrer) && !(referrer.equals("*") || other.referrer.equals("*")) ) {
 			return false;
 		}
 
@@ -73,9 +64,8 @@ public class BlacklistEntry implements Comparator<BlacklistEntry> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((page == null) ? 0 : page.hashCode());
 		result = prime * result + ((ip == null) ? 0 : ip.hashCode());
-		result = prime * result + ((referrer == null) ? 0 : referrer.hashCode());
 		result = prime * result + ((userAgent == null) ? 0 : userAgent.hashCode());
 		return result;
 	}

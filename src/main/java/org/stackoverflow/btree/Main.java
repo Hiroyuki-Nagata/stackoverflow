@@ -25,8 +25,8 @@ public class Main {
 
 	static TreeSet<BlacklistEntry> cache = new TreeSet<BlacklistEntry>(new BlacklistEntry());
 
-	public static boolean isBlacklisted(String ref, String ip, String ue, String email) {
-		return isBlacklisted(new BlacklistEntry(ref, ip, ue, email));
+	public static boolean isBlacklisted(String page, String ip, String ue) {
+		return isBlacklisted(new BlacklistEntry(page, ip, ue));
 	}
 
 	public static boolean isBlacklisted(BlacklistEntry e) {
@@ -34,7 +34,6 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
-		cache.add(new BlacklistEntry("www.google.com", "127.0.0.2", "*", "yahoo.com"));
 
 		// file loading
 		String text = new String(
@@ -55,11 +54,13 @@ public class Main {
 		
 		CsvReader csvReader = new CsvReader(reader);
 		List<BlacklistEntry> beans = new BeanListHandler<BlacklistEntry>(BlacklistEntry.class)
-				.includes("ip", "userAgent")
+				.includes("page", "ip", "userAgent")
 				.load(csvReader);
 		
 		System.out.println("blacklist size: " + beans.size());
-		System.out.println(beans.get(4).toString());
+		for (int i = 0; i < 10; i++) {
+			System.out.println(beans.get(i).toString());
+		}
 
 	}
 
